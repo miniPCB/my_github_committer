@@ -91,16 +91,26 @@ def select_git_repo_with_favorites():
 
 # 🧠 Diff-aware GPT commit message
 def ask_gpt_commit_message(filename, repo_path, repo_type):
+    # ⛔ Skip GPT prompt for binary or noisy files
+    skip_exts = (".zip", ".pdf", ".svg", ".png", ".jpg")
+    if filename.lower().endswith(skip_exts):
+        print(f"⚠️ Skipping GPT commit message for {filename} (binary or large file)")
+        return f"Update {filename}: binary or non-text file (no GPT message)."
+
     result = subprocess.run(
         ["git", "-C", repo_path, "diff", filename],
         stdout=subprocess.PIPE,
         text=True,
-        encoding='utf-8',  # ✅ Fix encoding issue
-        errors='replace'   # ✅ Replace bad characters instead of crashing
+        encoding='utf-8',
+        errors='replace'
     )
     diff = result.stdout.strip()
     if not diff:
         diff = "(No diff available. This file may be staged or new.)"
+
+    # 🧹 Trim long diffs
+    MAX_DIFF_CHARS = 3000
+    diff = diff[:MAX_DIFF_CHARS]
 
     context = {
         "eagle": "This is an EAGLE PCB design repo. The commit message should reflect schematic, board layout, or Gerber changes.",
