@@ -1,6 +1,16 @@
 {
   "favorites": [
-    { "path": "C:\\Repos\\EAGLE", "type": "eagle" },
-    { "path": "C:\\Repos\\my_github_committer", "type": "generic" }
+    {
+      "path": "C:\\Repos\\EAGLE",
+      "type": "eagle"
+    },
+    {
+      "path": "C:\\Repos\\my_github_committer",
+      "type": "generic"
+    },
+    {
+      "path": "C:\\Repos\\miniPCB",
+      "type": "generic"
+    }
   ]
 }
