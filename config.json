@@ -1,7 +1,6 @@
 {
   "favorites": [
-    "C:\\Repos\\EAGLE",
-    "C:\\Repos\\my_github_committer",
-    "C:\\Repos\\PartsCatalog"
+    { "path": "C:\\Repos\\EAGLE", "type": "eagle" },
+    { "path": "C:\\Repos\\my_github_committer", "type": "generic" }
   ]
 }
