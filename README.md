@@ -171,7 +171,7 @@ pip install openai
 3. **Run the Script**
 
 ```bash
-python git_gpt_assistant.py
+python my_github_committer.py
 ```
 
 ---
